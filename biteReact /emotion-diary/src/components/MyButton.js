@@ -1,17 +1,19 @@
 import React from "react";
-import styled from "styled-components";
 
 const MyButton = ({ text, type, onClick }) => {
+  const btnType = ["positive", "nagative"].includes(type) ? type : "default";
   return (
-    <button className={"MyButton"} onClick={onClick} style={styles.button}>
+    <button
+      className={["MyButton", `MyButton_${btnType}`].join(" ")}
+      onClick={onClick}
+    >
       {text}
     </button>
   );
 };
 
-const button = styled.button`
-  background-color: white;
-  border: 1px solid white;
-`;
+MyButton.defaultProps = {
+  type: "default",
+};
 
 export default MyButton;
